@@ -1,0 +1,160 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<div class="container">
+<h1>Ashworth Firm Closing Costs Calculator</h1>
+<div id="xm2"><!--page-->
+<div id="akw_update_selection">
+	<br><br>
+	<form class="form form-inline col-sm-offset-2">
+    <div class="row">
+		<div class="form-group col-sm-4">
+			<label class="">Please select the property county:</label>
+    </div>
+    <div class="form-group col-sm-6">
+			<select name="akw_select_county" id="akw_select_county" class='form-control' onchange="akwSwitchCalc($(&#39;#akw_select_county&#39;).val(),$(&#39;#akw_select_transaction&#39;).val())">
+				<option value="Davidson" selected="selected">Davidson/Rutherford/Williamson</option>
+				<option value="Hamilton">Hamilton/Knox</option>
+				<option value="Shelby">Shelby</option>
+				<option value="Other">Other</option>
+			</select>
+	</div>
+</div><!-- .row -->
+<br>
+  <div class="row">
+	<div class="form-group col-sm-4">
+		<label>Transaction type:</label>
+  </div>
+  <div>
+    <div class="form-group col-sm-6">
+ <select name="akw_select_transaction" id="akw_select_transaction" class="form-control" onchange="akwSwitchCalc($(&#39;#akw_select_county&#39;).val(),$(&#39;#akw_select_transaction&#39;).val())">
+			<option value="Purchase" selected="selected">Purchase</option>
+			<option value="Refi">Refinance</option>
+			<option value="Reissue">Refinance w/ Reissue Rate</option>
+		</select>
+	</div>
+</div>
+</div>
+</div>
+	</form>
+
+</div>
+			<div class="pageheader"></div><!--pheader--><p class="rvps1"><br></p>
+	<div style="width:98%;" align="left">
+		<div style="padding:0px;">
+<div align="center">	<div style="width:889px;" align="left">
+		<div style="padding:0px;" class="akw_padding_omit_reissue">
+
+
+<form name="myform" action="" class="form form-horizontal">
+<div id="Div1">
+
+
+
+<div class="row col-sm-offset-2">
+<div id="akwpurchasefield" class="row">
+<div class="form-group col-sm-3">
+	<label class=" control-label">Purchase Price</label>
+</div>
+<div class="form-group col-sm-6">
+	<input class="form-control" name="purchPrice">
+</div>
+	</div>
+</div>
+</div>
+
+<div class="row akw_reissue_field" style="display: none;">
+  <div class="form-group col-sm-3">
+	<label class="control-label">Current Coverage</label>
+</div>
+  <div class="form-group col-sm-6">
+	<input class="form-control" type="text" name="currcov">
+	</div>
+</div>
+<div class="row col-sm-offset-2"  style="margin-bottom:20px;">
+  <div class="form-group col-sm-3">
+	<label class="control-label">Loan Amount</label>
+  </div>
+	<div class="form-group col-sm-4">
+	<input class="form-control" onkeypress="searchKeyPress(event);" name="loanAmt">
+	</div>
+</div>
+<br><br>
+<div class="col-sm-offset-2">
+	<input class="btn" value="Clear Fields" type="reset"> <input class="btn" type="button" id="btnSearch" onclick="calc()" value="Calculate"> <input class="btn" id="btnPrint" onclick="akwPrintToPDF()" value="Print" type="button" name="Print">
+</div>
+</div> <!-- .row -->
+<br><br>
+<table cellpadding="5" cellspacing="0"  style="width:850px;border: 1px solid #000000;margin-left:35px" id="table_2">
+<tbody>
+
+<tr valign="top"><td colspan="2" style="width:868px;background: #c0c0c0;" class="td_2"><p><span class="rvts49">1100. Title Charges</span></p><p>
+</p></td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1101. Title Services and lenders title insurance<span style="float:right">(from GFE #4)</span></span></p><p>
+</p></td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><input name="closingIns" type="text" align="right" readonly="readonly"></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"> &nbsp; &nbsp; &nbsp; &nbsp; Search/Exam fee <input type="text" name="searchExam" readonly="readonly"></span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><br></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"> &nbsp; &nbsp; &nbsp; &nbsp; Closing Protection Letter <input id="Text26" name="wireFee" class="c12" type="text" value="$50.00" readonly="readonly"></span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><br></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1102. Settlement or closing fee <input id="Text25" name="closingFee" type="text" style="float: right" align="right" value="$395.00" readonly="readonly"></span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><br></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1103. Owners title insurance <span style="float:right">(from GFE#5)</span></span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><input id="Text7" name="simRate" type="text" align="right" readonly="readonly"></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1104. Lenders title insurance <input id="Text24" name="lenderPrem" type="text" style="float: right" align="right" readonly="readonly"> </span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><br></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1105. Lenders title policy limit <input name="lenderAmt" type="text" readonly="readonly"></span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><br></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1106. Owners title policy limit <input name="ownerAmt" type="text" readonly="readonly"></span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><br></span></p>
+</td></tr>
+
+<tr valign="top"><td colspan="2" style="width:865px;background: #c0c0c0;" class="td_2"><p><span class="rvts49">1200. Government Recording and Transfer Charges</span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1201. Government recording charges <span style="float:right">(from GFE#7)</span></span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><input name="totalRec" value="$131.00" type="text" align="right" readonly="readonly"></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1202. Deed <input name="deedRec" value="$18.00" type="text" readonly="readonly"> &nbsp; &nbsp; Mortgage <input id="Text21" name="mtgRec" value="$113.00" type="text" readonly="readonly"> &nbsp; &nbsp; Release</span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><br></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1203. Transfer Taxes <span style="float:right">(from GFE#8)</span></span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><input name="totalTax" type="text" align="right" readonly="readonly"></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1204. City/County tax/stamps &nbsp; Deed <input name="deedTax" type="text" readonly="readonly"> &nbsp; &nbsp;Mortgage<input name="mtgTax" type="text" readonly="readonly"></span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><br></span></p>
+</td></tr>
+
+<tr valign="top"><td style="width:707px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48">1205. State tax/stamps &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Deed &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;Mortgage</span></p>
+</td><td style="width:158px;border: 1px solid #000000;" class="td_2"><p><span class="rvts48"><br></span></p>
+</td></tr>
+
+<tr valign="top"><td colspan="2" align="center" style="background: #c0c0c0;" class="td_2"><p><span class="rvts49">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;Total &nbsp;&nbsp;<input name="totalClosing" type="text" readonly="readonly"></span></p>
+</td></tr>
+</tbody>
+</table>
+</form>
+</div>	</div>
+</div>
+<p class="rvps1"><br></p>
+</div>	</div>
+<!--/page--></div></div>
+</div><!--container-->
+<script type="text/javascript" src="akwcalcpdf.js"></script>
+<script type="text/javascript" src="calculator.js"></script>
+<script type="text/javascript">akwSwitchCalc("Davidson","Purchase");</script>
