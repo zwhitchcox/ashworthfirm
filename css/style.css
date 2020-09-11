@@ -141,6 +141,11 @@
   box-shadow: -15px 15px 30px rgba(0,0,0,.3);
   left:30px;
 }
+.bg-profile-polniak {
+  width: 500px;
+  height: auto;
+  top: 30px
+}
 .home-dog {
   position:relative;
   border-radius: 12px;

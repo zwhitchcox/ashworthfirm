@@ -1,14 +1,13 @@
 {
   "name": "ashworthfirm",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "express": "^4.13.3"
   },
   "devDependencies": {
     "extract-text-webpack-plugin": "^3.0.2",
-    "gh-pages": "^2.1.1",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.41.2",
     "webpack-dev-server": "^3.9.0"
@@ -23,5 +22,7 @@
     "url": "ssh://zane@45.55.240.57/home/zane/ashworthfirm/site.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": [],
+  "description": ""
 }
