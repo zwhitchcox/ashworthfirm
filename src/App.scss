@@ -1,26 +1,78 @@
-.logo {
-  width: auto;
-  margin: 8px 14px;
-  margin-left: 2rem;
-  height: 80px;
+:root {
+  --space: 1em;
+  --space-lg: 1.2em;
+  --break-sm: 384px;
+  --break-md: 576px;
+  --break-lg: 768px;
+  --nav-height: 110px;
+
+  /* nord color palette */
+  --nord0: #2e3440;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
 }
-body {
-  padding-bottom: 2000px;
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.main-nav {
+/* HEADER */
+main {
+  display: block;
+}
+
+nav {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space);
   top: 0;
   width: 100%;
-  background-color: rgba(229, 233, 240, .9);
+  background-color: var(--nord5);
+  height: var(--nav-height);
+}
+
+.logo {
+  width: auto;
+  height: calc(var(--nav-height) - 20px);
+}
+
+/* BODY */
+.App-body {
   display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  padding: var(--space);
+  margin: var(--nav-height) auto 0;
+  width: 100%;
+  max-width: 1200px;
+
 }
 
-main {
-  position: relative;
-}
+@media (min-width: 768px) {
+   .App-body {
+     flex-direction: row;
+   }
+   main {
+     flex: 1;
+   }
+   aside {
+     flex: 0 0 18em;
+     background-color: red;
+     overflow-y: scroll;
+     max-height: calc(100vh - var(--nav-height) - var(--space) - var(--space));
+   }
+ }
 
-.main-content {
-  margin-top: 130px;
-  padding: 0 1rem;
+/* FOOTER */
+footer {
+  flex: none;
+  width: 100%;
+  background-color: var(--nord5);
 }
